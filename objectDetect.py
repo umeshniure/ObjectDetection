@@ -6,12 +6,12 @@ import cv2 as cv
 import numpy as np
 import matplotlib.pyplot as plt
 
-yolo = cv.dnn.readNet("./yolov3.weights", "./yolov3.cfg")
+print("Object detection started...")
+yolo = cv.dnn.readNet("./cocoAndYoloFiles/yolov3.weights", "./cocoAndYoloFiles/yolov3.cfg")
 classes = []
-with open("./coco.names", 'r') as f:
+with open("cocoAndYoloFiles/coco.names", 'r') as f:
     classes = f.read().splitlines()
 
-print(classes)
 image = cv.imread("./images/working.jpg")
 blob_img = cv.dnn.blobFromImage(image, 1 / 255, (320, 320), (0, 0, 0), swapRB=True, crop=False)
 
@@ -33,8 +33,8 @@ for output in layer_output:
             center_y = int(detection[1] * image.shape[1])
             w = int(detection[0] * image.shape[0])
             h = int(detection[1] * image.shape[1])
-            x = center_x - w // 2
-            y = center_y - h // 2
+            x = center_x - w//2
+            y = center_y - h//2
 
             boxes.append([x, y, w, h])
             confidences.append(float(confidence))
@@ -54,7 +54,7 @@ for i in indexes.flatten():
     cv2.rectangle(image, (x, y), (x + w, y + h), color, 2)
     cv2.putText(image, label + " " + confid, (x, y + 20), font, 2, (255, 255, 255), 2)
 
-print("hello")
-plt.imshow(image)
-cv.imshow('image',image)
+    plt.imshow(image)
+cv.imshow('image', image)
 cv.waitKey(0)
+print("Object detection stopped.")
