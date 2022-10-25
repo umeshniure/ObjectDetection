@@ -2,7 +2,6 @@
 # Date: October 23, 2022
 # last modified date: October 25, 2022
 
-import cv2
 import cv2 as cv
 import numpy as np
 import matplotlib.pyplot as plt
@@ -12,8 +11,8 @@ classes = []
 with open("cocoAndYoloFiles/coco.names", 'r') as f:
     classes = f.read().splitlines()
 
-# camera = cv.VideoCapture(0)
-camera = cv.VideoCapture("./videos/video1.mp4")
+camera = cv.VideoCapture(0)
+# camera = cv.VideoCapture("./videos/video1.mp4")
 # image = cv.imread("./images/working.jpg")
 font = cv.FONT_HERSHEY_DUPLEX
 
