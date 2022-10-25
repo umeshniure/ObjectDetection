@@ -1,6 +1,7 @@
 # Author: Umesh Niure Sharma
 # Date: October 23, 2022
-# last modified date: October 24, 2022
+# last modified date: October 25, 2022
+
 import cv2
 import cv2 as cv
 import numpy as np
@@ -11,7 +12,8 @@ classes = []
 with open("cocoAndYoloFiles/coco.names", 'r') as f:
     classes = f.read().splitlines()
 
-camera = cv.VideoCapture(0)
+# camera = cv.VideoCapture(0)
+camera = cv.VideoCapture("./videos/video1.mp4")
 # image = cv.imread("./images/working.jpg")
 font = cv.FONT_HERSHEY_DUPLEX
 
@@ -67,4 +69,4 @@ while True:
         break
 
 cv.destroyAllWindows()
-print("Object detection finished!")
+print("Object detection stopped!")
